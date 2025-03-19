@@ -9,7 +9,7 @@ const Header = () => {
   const [value, setValue] = useState(false);
 
   return (
-    <div className="max-w-[1240px] mx-auto py-6 flex items-center px-4">
+    <div className="max-w-[1240px] mx-auto py-6 flex items-center px-4 max-md:py-5">
       <div className="flex items-center gap-10 max-xl:justify-center max-xl:gap-8 max-lg:justify-between w-full">
         <div className="flex items-center gap-4">
           <div
@@ -34,13 +34,13 @@ const Header = () => {
           </div>
           <Link
             href="#"
-            className="font-integral font-bold text-[32px] leading-[100%]"
+            className="font-integral font-bold text-[32px] leading-[100%] max-md:text-[25px]"
           >
             SHOP.CO
           </Link>
         </div>
         <div
-          className={`flex gap-6 items-center max-lg:fixed max-lg:top-0 max-lg:w-full max-lg:h-full duration-300 ease-linear max-lg:justify-center max-lg:flex-col max-lg:bg-black ${
+          className={`flex gap-6 items-center max-lg:fixed max-lg:top-0 max-lg:w-full max-lg:h-full duration-300 ease-linear max-lg:justify-center max-lg:flex-col max-lg:bg-black max-md:z-10 ${
             open ? "max-lg:left-0" : "max-lg:-left-full"
           }`}
         >
@@ -48,7 +48,8 @@ const Header = () => {
             <Link
               href={obj.link}
               key={i}
-              className="leading-[100%] max-lg:text-white max-lg:text-xl"
+              onClick={() => setOpen(!open)}
+              className="leading-[100%] max-lg:text-white max-lg:text-xl hover:opacity-60 duration-300 ease-linear"
             >
               {obj.title}
             </Link>
@@ -62,7 +63,7 @@ const Header = () => {
             <SearchIcon />
           </button>
           <div
-            className={`w-[557px] bg-[#F0F0F0] py-3 px-4 rounded-full flex gap-3 max-xl:w-[320px] max-md:flex-col max-md:fixed max-md:right-0 max-md:w-10/12  max-md:top-28 max-sm:top-[124px] max-md:mx-3 ${
+            className={`w-[557px] bg-[#F0F0F0] py-3 px-4 rounded-full flex gap-3 max-xl:w-[320px] max-md:flex-col max-md:fixed max-md:right-0 max-md:w-10/12  max-md:top-14 max-sm:top-[54px] max-md:mx-3 max-md:border max-md:border-black ${
               value ? "max-md:block" : "max-md:hidden"
             }`}
           >
@@ -77,7 +78,7 @@ const Header = () => {
               id="search-inp"
               type="text"
               placeholder="Search for products..."
-              className={`placeholder:text-black placeholder:opacity-40 outline-none bg-transparent text-black opacity-40`}
+              className={`placeholder:text-black placeholder:opacity-40 outline-none bg-transparent text-black opacity-40 max-md:placeholder:opacity-100 max-md:opacity-100 w-full`}
             />
           </div>
           <div className="cursor-pointer">
