@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Shop.co",
+  title: "Shop.Co",
   description:
     "Browse through our diverse range of meticulously crafted garments....",
   openGraph: {
-    title: "Shop.co",
+    title: "Shop.Co",
     description:
       "Browse through our diverse range of meticulously crafted garments....",
     images: [

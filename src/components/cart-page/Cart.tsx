@@ -56,9 +56,9 @@ const Cart = () => {
         <h2 className="text-[40px] font-integral py-6 leading-[100%]">
           Your cart
         </h2>
-        <div className="w-full flex justify-between items-start flex-wrap max-xl:gap-5">
-          <div className="border border-[#0000001A] rounded-[20px] max-w-[715px] py-5 px-6 w-full">
-            {cartItems.length > 0 ? (
+        {cartItems.length > 0 ? (
+          <div className="w-full flex justify-between items-start flex-wrap max-xl:gap-5">
+            <div className="border border-[#0000001A] rounded-[20px] max-w-[715px] py-5 px-6 w-full">
               <div className="flex flex-col gap-6">
                 {cartItems.map((item, index) => (
                   <div key={index}>
@@ -119,12 +119,12 @@ const Cart = () => {
                   </div>
                 ))}
               </div>
-            ) : (
-              <p className="text-2xl satoshi-bold">No items in the cart.</p>
-            )}
+            </div>
+            <OrderSummery />
           </div>
-          <OrderSummery />
-        </div>
+        ) : (
+          <p className="text-2xl satoshi-bold">No items in the cart.</p>
+        )}
       </div>
     </div>
   );
