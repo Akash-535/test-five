@@ -2,11 +2,16 @@
 import { HEADER_LIST } from "@/utils/helper";
 import { SearchIcon, ShopCartIcon } from "@/utils/icons";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(false);
+  const router = useRouter();
+  const shopProductHandler = () => {
+    router.push("/cart");
+  };
 
   return (
     <div className="max-w-[1240px] mx-auto py-6 flex items-center px-4 max-md:py-5">
@@ -78,12 +83,12 @@ const Header = () => {
               id="search-inp"
               type="text"
               placeholder="Search for products..."
-              className={`placeholder:text-black placeholder:opacity-40 outline-none bg-transparent text-black opacity-40 max-md:placeholder:opacity-100 max-md:opacity-100 w-full`}
+              className={`placeholder:text-[#00000066] outline-none bg-transparent text-[#00000066] max-md:placeholder:opacity-100 max-md:opacity-100 w-full`}
             />
           </div>
-          <div className="cursor-pointer">
+          <button onClick={shopProductHandler} className="cursor-pointer">
             <ShopCartIcon />
-          </div>
+          </button>
         </div>
       </div>
     </div>

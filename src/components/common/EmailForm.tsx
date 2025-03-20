@@ -63,7 +63,7 @@ const EmailForm = ({ myClass }: ClassCustom) => {
                   name="email"
                   type="email"
                   placeholder="Enter your email address"
-                  className="w-full placeholder:text-black placeholder:opacity-40 text-black opacity-40 outline-none bg-transparent"
+                  className="w-full placeholder:text-[#00000066] text-[#00000066] outline-none bg-transparent"
                 />
               </div>
               {error && email.length === 0 ? (
