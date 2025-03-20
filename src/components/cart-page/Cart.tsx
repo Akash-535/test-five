@@ -6,15 +6,47 @@ import { DeleteIcon, MinusIcon, NextIcon, PlusIcon } from "@/utils/icons";
 import Image from "next/image";
 import OrderSummery from "./OrderSummery";
 
+interface CartItem {
+  title: string;
+  image: any;
+  color: string;
+  size: string;
+  quantity: number;
+  price: number;
+}
+
 const Cart = () => {
-  const [cartItem, setCartItem] = useState<any>(null);
-  const [count, setCount] = useState<any>(1);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  // Fetching the cart items from localStorage on component mount
   useEffect(() => {
-    const storedItem = localStorage.getItem("cartItem");
-    if (storedItem) {
-      setCartItem(JSON.parse(storedItem));
+    const storedCart = localStorage.getItem("cart");
+    console.log("Stored Cart:", storedCart); // Debugging log to check if cart items are fetched correctly
+    if (storedCart) {
+      setCartItems(JSON.parse(storedCart)); // Set cart items to state if items exist
     }
   }, []);
+
+  // Function to remove item from the cart
+  const handleRemoveItem = (index: number) => {
+    const updatedCart = cartItems.filter((_, i) => i !== index); // Remove item by index
+    setCartItems(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart)); // Update cart in localStorage
+  };
+
+  // Function to update the quantity of an item in the cart
+  const handleQuantityChange = (index: number, change: number) => {
+    const updatedCart = [...cartItems];
+    updatedCart[index].quantity += change;
+
+    // Ensure quantity doesn't go below 1
+    if (updatedCart[index].quantity < 1) {
+      updatedCart[index].quantity = 1;
+    }
+
+    setCartItems(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart)); // Update cart in localStorage
+  };
 
   return (
     <div>
@@ -30,59 +62,70 @@ const Cart = () => {
         </h2>
         <div className="w-full flex justify-between items-start flex-wrap max-xl:gap-5">
           <div className="border border-[#0000001A] rounded-[20px] max-w-[715px] py-5 px-6 w-full">
-            {cartItem ? (
-              <div className="flex gap-4 items-center w-full">
-                <div className="size-[124px] overflow-hidden rounded-[8px]">
-                  <Image
-                    width={124}
-                    height={124}
-                    className="hover:scale-110 ease-linear duration-300"
-                    src={cartItem.product.image}
-                    alt="image"
-                  />
-                </div>
-                <div className="w-full">
-                  <div className="flex justify-between w-full items-center">
-                    <h3 className="text-xl satoshi-bold max-md:text-base">
-                      {cartItem.product.title}
-                    </h3>
-                    <button className="cursor-pointer">
-                      <DeleteIcon />
-                    </button>
-                  </div>
-                  <p className="text-sm pt-0.5 max-md:text-xs">
-                    Size: <span className="opacity-60">{cartItem.size}</span>
-                  </p>
-                  <p className="text-sm pt-0.5 max-md:text-xs">
-                    Color: <span className="opacity-60">{cartItem.color}</span>
-                  </p>
-                  <div className="pt-4 flex justify-between w-full items-center">
-                    <p className="text-2xl satoshi-bold max-md:text-xl">
-                      {cartItem.product.price}
-                    </p>
-                    <div className="flex max-w-[126px] max-md:max-w-[105px] rounded-full w-full items-center justify-between bg-[#F0F0F0] py-3 px-5 max-md:py-[7.5px] max-md:px-[13.5px]">
-                      <button
-                        onClick={() => setCount(Math.max(count - 1, 1))}
-                        className="cursor-pointer"
-                      >
-                        <MinusIcon />
-                      </button>
-                      <p className="text-black satoshi-medium leading-[100%]">
-                        {count}
-                      </p>
-                      <button
-                        onClick={() => setCount(count + 1)}
-                        className="cursor-pointer"
-                      >
-                        <PlusIcon />
-                      </button>
+            {cartItems.length > 0 ? (
+              <div className="flex flex-col gap-6">
+                {cartItems.map((item, index) => (
+                  <div key={index}>
+                    <div className="flex gap-4 items-center w-full pb-6">
+                      <div className="size-[124px] overflow-hidden rounded-[8px]">
+                        <Image
+                          width={124}
+                          height={124}
+                          className="hover:scale-110 ease-linear duration-300"
+                          src={item.image}
+                          alt="image"
+                        />
+                      </div>
+                      <div className="w-full">
+                        <div className="flex justify-between w-full items-center">
+                          <h3 className="text-xl satoshi-bold max-md:text-base">
+                            {item.title}
+                          </h3>
+                          <button
+                            onClick={() => handleRemoveItem(index)}
+                            className="cursor-pointer"
+                          >
+                            <DeleteIcon />
+                          </button>
+                        </div>
+                        <p className="text-sm pt-0.5 max-md:text-xs">
+                          Size: <span className="opacity-60">{item.size}</span>
+                        </p>
+                        <p className="text-sm pt-0.5 max-md:text-xs">
+                          Color:{" "}
+                          <span className="opacity-60">{item.color}</span>
+                        </p>
+                        <div className="pt-4 flex justify-between w-full items-center">
+                          <p className="text-2xl satoshi-bold max-md:text-xl">
+                            {item.price}
+                          </p>
+                          <div className="flex max-w-[126px] max-md:max-w-[105px] rounded-full w-full items-center justify-between bg-[#F0F0F0] py-3 px-5 max-md:py-[7.5px] max-md:px-[13.5px]">
+                            <button
+                              onClick={() => handleQuantityChange(index, -1)}
+                              className="cursor-pointer"
+                            >
+                              <MinusIcon />
+                            </button>
+                            <p className="text-black satoshi-medium leading-[100%]">
+                              {item.quantity}
+                            </p>
+                            <button
+                              onClick={() => handleQuantityChange(index, 1)}
+                              className="cursor-pointer"
+                            >
+                              <PlusIcon />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
+                    <div className="w-full h-[1px] bg-[#0000001A]"></div>
                   </div>
-                </div>
+                ))}
               </div>
             ) : (
               <p className="text-2xl satoshi-bold">
-                Please add product in your cart
+                Please add products to your cart
               </p>
             )}
           </div>

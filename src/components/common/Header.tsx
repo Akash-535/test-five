@@ -4,17 +4,28 @@ import { SearchIcon, ShopCartIcon } from "@/utils/icons";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-
+interface CartItem {
+  title: string;
+  image: any;
+  color: string;
+  size: string;
+  quantity: number;
+  price: number;
+}
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(false);
+  const [cartLength, setCartLength] = useState<CartItem[] | any>(0);
   const router = useRouter();
-  const shopProductHandler = () => {
-    router.push("/cart");
-  };
   useEffect(() => {
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) {
+      const cart = JSON.parse(storedCart);
+      setCartLength(cart.length);
+    }
     document.body.style.overflow = open || value ? "hidden" : "auto";
   }, [open, value]);
+
   return (
     <div className="max-w-[1240px] mx-auto py-6 flex items-center px-4 max-md:py-5">
       <div className="flex items-center gap-10 max-xl:justify-center max-xl:gap-8 max-lg:justify-between w-full">
@@ -55,7 +66,7 @@ const Header = () => {
             <Link
               href={obj.link}
               key={i}
-              onClick={() => setOpen(!open)}
+              onClick={() => setOpen(false)}
               className="leading-[100%] max-lg:text-white max-lg:text-xl hover:opacity-60 duration-300 ease-linear"
             >
               {obj.title}
@@ -88,8 +99,16 @@ const Header = () => {
               className={`placeholder:text-[#00000066] outline-none bg-transparent text-[#00000066] w-full`}
             />
           </div>
-          <button onClick={shopProductHandler} className="cursor-pointer">
+          <button
+            onClick={() => router.push("/cart")}
+            className="cursor-pointer relative"
+          >
             <ShopCartIcon />
+            {cartLength > 0 && (
+              <span className=" absolute top-[-15px] right-[-5px]">
+                {cartLength}
+              </span>
+            )}
           </button>
         </div>
       </div>

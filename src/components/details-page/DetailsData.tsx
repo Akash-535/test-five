@@ -10,13 +10,15 @@ import {
 import { MinusIcon, NextIcon, PlusIcon, RightTickIcon } from "@/utils/icons";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface SelectProduct {
   color: string | number | null;
   size: any;
   quantity: number;
-  product: number | string;
+  image: any;
+  title: string;
+  price: string;
 }
 
 const DetailsData = () => {
@@ -26,7 +28,8 @@ const DetailsData = () => {
   const [count, setCount] = useState<number>(1);
   const { slug } = useParams();
   const arr = [...TOP_SELLING_LIST, ...NEW_ARRIVALS_LIST, ...ALSO_LIKE_LIST];
-  const router = useRouter();
+  const [cart, setCart] = useState<any>([]);
+
   const handleAddToCart = () => {
     if (!newShop) return;
 
@@ -34,10 +37,13 @@ const DetailsData = () => {
       color: COLOR_LIST[clicked],
       size: SIZE_LIST[size],
       quantity: count,
-      product: newShop,
+      image: newShop.image,
+      title: newShop.title,
+      price: newShop.price,
     };
-    localStorage.setItem("cartItem", JSON.stringify(selectedProduct));
-    router.push("/cart");
+    const updatedCart = [...cart, selectedProduct];
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
   const shopArray = arr.filter(
     (obj) =>
