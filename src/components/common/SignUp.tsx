@@ -11,7 +11,7 @@ const SignUp = () => {
         show ? "hidden" : ""
       }`}
     >
-      <div className="flex w-full items-center justify-between max-w-[796px] ml-auto pr-24 min-[1919px]:mx-auto min-[1919px]:pr-0 max-lg:pr-0">
+      <div className="flex w-full items-center justify-between max-w-[796px] ml-auto pr-24 2xl:mx-auto min-[1919px]:pr-0 max-lg:pr-0">
         <div className="flex gap-1 justify-center items-center">
           <p className="text-white text-sm max-md:text-xs">
             Sign up and get 20% off to your first order.

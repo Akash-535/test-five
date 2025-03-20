@@ -10,7 +10,7 @@ import {
 const Footer = () => {
   return (
     <div className="relative bg-[#F0F0F0] w-full min-h-[499px] pt-[140px] max-lg:pt-[190px]">
-      <EmailForm myClass="absolute -top-[38%] max-md:-top-[34%] left-1/2 -translate-x-1/2 translate-y-1/2" />
+      <EmailForm myClass="absolute max-xl:-top-1/2 max-lg:-top-[38%] -top-[38%] max-md:-top-[34%] left-1/2 -translate-x-1/2 translate-y-1/2" />
       <div className="max-w-[1240px] mx-auto flex justify-between flex-wrap px-4 max-lg:gap-y-6 pb-[50px] max-lg:pb-10">
         <div className="w-4/12 max-lg:w-full">
           <Link

@@ -402,3 +402,12 @@ export const USER_TAB_LIST: string[] = [
   "Rating & Reviews",
   "FAQs",
 ];
+interface SelectProduct {
+  color: string | number | null;
+  size: any;
+  quantity: number;
+  image: any;
+  title: string;
+  price: string;
+}
+export const CART_ARRAY :SelectProduct[]= [];

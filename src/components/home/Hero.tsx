@@ -1,8 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SignUp from "../common/SignUp";
 import Header from "../common/Header";
-import { COUNTER_LIST } from "@/utils/helper";
+import { CART_ARRAY, COUNTER_LIST } from "@/utils/helper";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
@@ -13,6 +13,7 @@ const Hero = () => {
     triggerOnce: true,
     onChange: (inView) => setCount(inView),
   });
+
   return (
     <div className="relative">
       <SignUp />

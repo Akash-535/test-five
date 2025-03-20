@@ -22,11 +22,10 @@ const Cart = () => {
     const storedCart = localStorage.getItem("cart");
     if (storedCart) {
       const parsedCart = JSON.parse(storedCart);
-      console.log("Cart items loaded:", parsedCart); // Log loaded items
       setCartItems(parsedCart);
     }
   }, []);
-
+  const lastIndex = cartItems.length - 1;
   const handleRemoveItem = (index: number) => {
     const updatedCart = cartItems.filter((_, i) => i !== index);
     setCartItems(updatedCart);
@@ -53,16 +52,23 @@ const Cart = () => {
         <p className="flex items-center gap-2 pt-6 leading-[100%] text-[#00000099]">
           Home <NextIcon /> <span className="pl-2.5 text-black">Cart</span>
         </p>
-        <h2 className="text-[40px] font-integral py-6 leading-[100%]">
+        <h2 className="text-[40px] font-integral py-6 max-lg:py-5 max-md:pt-2 max-lg:text-4xl max-md:text-[32px]">
           Your cart
         </h2>
         {cartItems.length > 0 ? (
           <div className="w-full flex justify-between items-start flex-wrap max-xl:gap-5">
-            <div className="border border-[#0000001A] rounded-[20px] max-w-[715px] py-5 px-6 w-full">
+            <div className="border border-[#0000001A] rounded-[20px] max-w-[715px] py-5 px-6 w-full max-xl:max-w-none">
               <div className="flex flex-col gap-6">
                 {cartItems.map((item, index) => (
-                  <div key={index}>
-                    <div className="flex gap-4 items-center w-full pb-6">
+                  <div
+                    key={index}
+                    className={`flex gap-4 ${
+                      index === 0
+                        ? ""
+                        : "border-t border-solid border-black/10 pt-6 max-sm:pt-4 max-md:pt-5"
+                    } ${index === lastIndex && "!pb-0"}`}
+                  >
+                    <div className="flex gap-4 items-center w-full">
                       <div className="size-[124px] max-w-[124px] w-full overflow-hidden rounded-[8px]">
                         <Image
                           width={124}
@@ -115,7 +121,6 @@ const Cart = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="w-full h-[1px] bg-[#0000001A]"></div>
                   </div>
                 ))}
               </div>

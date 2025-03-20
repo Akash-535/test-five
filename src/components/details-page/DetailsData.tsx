@@ -9,8 +9,8 @@ import {
 } from "@/utils/helper";
 import { MinusIcon, NextIcon, PlusIcon, RightTickIcon } from "@/utils/icons";
 import Image from "next/image";
-import { useParams, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface SelectProduct {
   color: string | number | null;
@@ -45,6 +45,14 @@ const DetailsData = () => {
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
+  useEffect(() => {
+    const cartData = localStorage.getItem("cart");
+    if (cartData) {
+      setCart(JSON.parse(cartData));
+      console.log("cart data");
+    }
+  }, []);
+
   const shopArray = arr.filter(
     (obj) =>
       obj &&

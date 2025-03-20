@@ -11,7 +11,7 @@ const OrderSummery = () => {
     localStorage.removeItem("cart");
   };
   return (
-    <div className="border border-[#0000001A] rounded-[20px] pt-5 px-6 pb-8 max-w-[505px] w-full max-md:p-5">
+    <div className="border border-[#0000001A] rounded-[20px] pt-5 px-6 pb-8 max-w-[505px] w-full max-md:p-5 max-xl:max-w-none">
       <h4 className="text-2xl satoshi-bold">Order Summary</h4>
       <div className="pt-6 flex flex-col gap-5 max-md:pt-4">
         <div className="flex items-center justify-between">
