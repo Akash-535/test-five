@@ -6,15 +6,20 @@ import Hero from "@/components/home/Hero";
 import NewArrivals from "@/components/home/NewArrivals";
 import ProductBrands from "@/components/home/ProductBrands";
 import TopSelling from "@/components/home/TopSelling";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
     <>
       <Hero />
       <ProductBrands />
-      <NewArrivals />
+      <Suspense>
+        <NewArrivals />
+      </Suspense>
       <div className="max-w-[1240px] mx-auto w-full h-[1px] bg-[#0000001A]"></div>
-      <TopSelling />
+      <Suspense>
+        <TopSelling />
+      </Suspense>
       <DressStyle />
       <HappyCustomers />
       <Footer />

@@ -22,7 +22,7 @@ const Reviews = () => {
   };
   return (
     <div className="flex flex-col justify-center items-center max-xl:px-4 max-w-[1240px] mx-auto">
-      <div className="flex w-full items-center justify-between pb-[29px]">
+      <div className="flex w-full items-center justify-between pb-[29px] pt-4">
         <div className="flex gap-2 items-center justify-center">
           <h3 className="satoshi-bold text-2xl leading-[100%]">All Reviews</h3>
           <p className="leading-[100%] text-black/60 text-base">

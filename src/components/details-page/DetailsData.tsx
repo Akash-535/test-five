@@ -1,5 +1,6 @@
 "use client";
 import {
+  COLOR_LIST,
   DETAILS_SIDE_IMG,
   NEW_ARRIVALS_LIST,
   SIZE_LIST,
@@ -10,9 +11,16 @@ import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import React, { useState } from "react";
 
+interface SelectProduct {
+  color: string | number | null;
+  size: any;
+  quantity: number;
+  product: number | string;
+}
+
 const DetailsData = () => {
-  const [clicked, setClicked] = useState<number | null>(0);
-  const [size, setSize] = useState<number | null>(2);
+  const [clicked, setClicked] = useState<any>(0);
+  const [size, setSize] = useState<any>(2);
   const [selectImg, setSelectImg] = useState<string>();
   const [count, setCount] = useState<number>(1);
   const { slug } = useParams();
@@ -21,9 +29,9 @@ const DetailsData = () => {
   const handleAddToCart = () => {
     if (!newShop) return;
 
-    const selectedProduct: any = {
-      color: clicked,
-      size: size,
+    const selectedProduct: SelectProduct = {
+      color: COLOR_LIST[clicked],
+      size: SIZE_LIST[size],
       quantity: count,
       product: newShop,
     };
@@ -90,8 +98,8 @@ const DetailsData = () => {
           />
         </div>
         <div className="w-6/12 max-lg:w-8/12 max-md:w-full">
-          <h2 className="text-[40px] font-integral leading-[100%] max-lg:text-3xl max-md:text-2xl">
-            One Life Graphic T-shirt
+          <h2 className="text-[40px] font_numeric leading-[100%] max-lg:text-3xl max-md:text-2xl">
+            {newShop.title}
           </h2>
           <div className="flex gap-3 py-3.5 items-center">
             <div>{newShop.ratingStar}</div>
@@ -124,7 +132,7 @@ const DetailsData = () => {
           <div className="py-6">
             <p className="opacity-60 leading-[100%] pb-4">Select Colors</p>
             <div className="flex gap-4">
-              {[...Array(3)].map((_, i) => (
+              {COLOR_LIST.map((obj, i) => (
                 <div
                   onClick={() => checkHandler(i)}
                   key={i}

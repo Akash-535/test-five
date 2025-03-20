@@ -35,7 +35,9 @@ body {
 .font-integral {
   font-family: "integral-cf", sans-serif;
 }
-
+.font_numeric {
+  font-variant-numeric: lining-nums proportional-nums;
+}
 .sign-up-link::after {
   position: absolute;
   content: "";
@@ -55,6 +57,13 @@ body {
 }
 .social-icon:hover svg path {
   fill: white;
+}
+
+.checkout-arrow svg path {
+  fill: white;
+}
+.group:hover .checkout-arrow svg path {
+  fill: black;
 }
 
 @media (max-width: 767.98px) {

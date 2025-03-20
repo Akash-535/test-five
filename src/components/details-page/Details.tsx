@@ -24,7 +24,6 @@ const Details = () => {
           <SignUp />
           <Header />
           <DetailsData />
-          <div className="max-w-[1240px] mx-auto w-full h-[1px] bg-[#0000001A] px-4"></div>
         </div>
       ) : (
         <div className="min-h-screen bg-black flex justify-center items-center">

@@ -291,6 +291,8 @@ export const ONLINE_PAY_APP_LIST = [
   },
 ];
 
+export const COLOR_LIST: string[] = ["brown", "green", "blue"];
+
 export const SIZE_LIST: string[] = ["Small", "Medium", "Large", "X-Large"];
 
 export const ALSO_LIKE_LIST = [
@@ -389,4 +391,14 @@ export const REVIEWS_LIST = [
   },
 ];
 
-export const DETAILS_SIDE_IMG = ["", "/assets/images/details-tshirt.webp", "/assets/images/details-man.webp"];
+export const DETAILS_SIDE_IMG: string[] = [
+  "",
+  "/assets/images/details-tshirt.webp",
+  "/assets/images/details-man.webp",
+];
+
+export const USER_TAB_LIST: string[] = [
+  "Product Details",
+  "Rating & Reviews",
+  "FAQs",
+];

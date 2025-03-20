@@ -3,7 +3,7 @@ import { HEADER_LIST } from "@/utils/helper";
 import { SearchIcon, ShopCartIcon } from "@/utils/icons";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -12,7 +12,9 @@ const Header = () => {
   const shopProductHandler = () => {
     router.push("/cart");
   };
-
+  useEffect(() => {
+    document.body.style.overflow = open || value ? "hidden" : "auto";
+  }, [open, value]);
   return (
     <div className="max-w-[1240px] mx-auto py-6 flex items-center px-4 max-md:py-5">
       <div className="flex items-center gap-10 max-xl:justify-center max-xl:gap-8 max-lg:justify-between w-full">
@@ -68,7 +70,7 @@ const Header = () => {
             <SearchIcon />
           </button>
           <div
-            className={`w-[557px] bg-[#F0F0F0] py-3 px-4 rounded-full flex gap-3 max-xl:w-[320px] max-md:flex-col max-md:fixed max-md:right-0 max-md:w-10/12  max-md:top-14 max-sm:top-[54px] max-md:mx-3 max-md:border max-md:border-black ${
+            className={`w-[557px] bg-[#F0F0F0] py-3 px-4 rounded-full flex gap-3 max-xl:w-[320px] max-md:flex-col max-md:fixed max-md:right-0 max-md:w-10/12  max-md:top-14 max-sm:top-[90px] max-md:mx-3 max-md:border max-md:border-black ${
               value ? "max-md:block" : "max-md:hidden"
             }`}
           >
@@ -83,7 +85,7 @@ const Header = () => {
               id="search-inp"
               type="text"
               placeholder="Search for products..."
-              className={`placeholder:text-[#00000066] outline-none bg-transparent text-[#00000066] max-md:placeholder:opacity-100 max-md:opacity-100 w-full`}
+              className={`placeholder:text-[#00000066] outline-none bg-transparent text-[#00000066] w-full`}
             />
           </div>
           <button onClick={shopProductHandler} className="cursor-pointer">

@@ -12,7 +12,7 @@ const DressStyle = () => {
             <Image
               width={407}
               height={289}
-              className="max-w-[407px] max-h-[289px] max-md:max-w-[310px] max-md:max-h-[190px] rounded-[20px] max-lg:max-h-[244px] object-top object-cover max-xl:max-w-[350px] max-xl:w-full max-lg:max-w-[580px]"
+              className="max-w-[407px] max-h-[289px] max-md:max-w-[310px] max-md:max-h-[190px] rounded-[20px] max-lg:max-h-[244px] lg:object-top object-cover max-xl:max-w-[350px] max-xl:w-full max-lg:max-w-[580px]"
               src="/assets/images/causual-dress-img.webp"
               alt="casual dress"
             />
