@@ -8,7 +8,7 @@ import OrderSummery from "./OrderSummery";
 
 interface CartItem {
   title: string;
-  image: any;
+  image: string;
   color: string;
   size: string;
   quantity: number;
@@ -18,34 +18,30 @@ interface CartItem {
 const Cart = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  // Fetching the cart items from localStorage on component mount
   useEffect(() => {
     const storedCart = localStorage.getItem("cart");
-    console.log("Stored Cart:", storedCart); // Debugging log to check if cart items are fetched correctly
     if (storedCart) {
-      setCartItems(JSON.parse(storedCart)); // Set cart items to state if items exist
+      const parsedCart = JSON.parse(storedCart);
+      console.log("Cart items loaded:", parsedCart); // Log loaded items
+      setCartItems(parsedCart);
     }
   }, []);
 
-  // Function to remove item from the cart
   const handleRemoveItem = (index: number) => {
-    const updatedCart = cartItems.filter((_, i) => i !== index); // Remove item by index
+    const updatedCart = cartItems.filter((_, i) => i !== index);
     setCartItems(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart)); // Update cart in localStorage
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
-  // Function to update the quantity of an item in the cart
   const handleQuantityChange = (index: number, change: number) => {
     const updatedCart = [...cartItems];
     updatedCart[index].quantity += change;
-
-    // Ensure quantity doesn't go below 1
     if (updatedCart[index].quantity < 1) {
       updatedCart[index].quantity = 1;
     }
 
     setCartItems(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart)); // Update cart in localStorage
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   return (
@@ -67,7 +63,7 @@ const Cart = () => {
                 {cartItems.map((item, index) => (
                   <div key={index}>
                     <div className="flex gap-4 items-center w-full pb-6">
-                      <div className="size-[124px] overflow-hidden rounded-[8px]">
+                      <div className="size-[124px] max-w-[124px] w-full overflow-hidden rounded-[8px]">
                         <Image
                           width={124}
                           height={124}
@@ -124,9 +120,7 @@ const Cart = () => {
                 ))}
               </div>
             ) : (
-              <p className="text-2xl satoshi-bold">
-                Please add products to your cart
-              </p>
+              <p className="text-2xl satoshi-bold">No items in the cart.</p>
             )}
           </div>
           <OrderSummery />

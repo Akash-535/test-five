@@ -5,6 +5,11 @@ import React from "react";
 
 const OrderSummery = () => {
   const router = useRouter();
+
+  const handleCheckout = () => {
+    router.push("/");
+    localStorage.removeItem("cart");
+  };
   return (
     <div className="border border-[#0000001A] rounded-[20px] pt-5 px-6 pb-8 max-w-[505px] w-full max-md:p-5">
       <h4 className="text-2xl satoshi-bold">Order Summary</h4>
@@ -44,10 +49,7 @@ const OrderSummery = () => {
         </button>
       </div>
       <button
-        onClick={() => {
-          router.push("/");
-          localStorage.removeItem("cart");
-        }}
+        onClick={handleCheckout}
         className="cursor-pointer group mt-4 w-full flex justify-center items-center gap-3 bg-black rounded-full py-3 text-base satoshi-medium text-white border border-transparent hover:bg-white hover:text-black hover:border-black duration-300 ease-linear"
       >
         Go to Checkout{" "}

@@ -51,7 +51,7 @@ const Header = () => {
             ></span>
           </div>
           <Link
-            href="#"
+            href="/"
             className="font-integral font-bold text-[32px] leading-[100%] max-md:text-[25px]"
           >
             SHOP.CO
