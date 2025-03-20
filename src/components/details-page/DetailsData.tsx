@@ -1,5 +1,6 @@
 "use client";
 import {
+  ALSO_LIKE_LIST,
   COLOR_LIST,
   DETAILS_SIDE_IMG,
   NEW_ARRIVALS_LIST,
@@ -24,7 +25,7 @@ const DetailsData = () => {
   const [selectImg, setSelectImg] = useState<string>();
   const [count, setCount] = useState<number>(1);
   const { slug } = useParams();
-  const arr = [...TOP_SELLING_LIST, ...NEW_ARRIVALS_LIST];
+  const arr = [...TOP_SELLING_LIST, ...NEW_ARRIVALS_LIST, ...ALSO_LIKE_LIST];
   const router = useRouter();
   const handleAddToCart = () => {
     if (!newShop) return;

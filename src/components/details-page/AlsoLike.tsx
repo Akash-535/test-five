@@ -4,8 +4,10 @@ import Image from "next/image";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Heading from "../common/Heading";
+import { useRouter } from "next/navigation";
 
 const AlsoLike = () => {
+  const router = useRouter();
   return (
     <div className="pt-16 pb-[168px] flex justify-center lg:items-center flex-col overflow-hidden px-4 max-lg:pt-16 max-md:pt-[50px] max-lg:pb-[185px]">
       <Heading text="You might also like" />
@@ -31,6 +33,11 @@ const AlsoLike = () => {
       >
         {ALSO_LIKE_LIST.map((obj, i) => (
           <SwiperSlide
+            onClick={() =>
+              router.push(
+                `/products/${obj.title.toLowerCase().replace(/\s/g, "-")}`
+              )
+            }
             key={i}
             className="cursor-pointer group w-full max-w-[295px]"
           >
@@ -47,7 +54,7 @@ const AlsoLike = () => {
               {obj.title}
             </p>
             <div className="py-2 flex gap-3 items-center">
-              {obj.retingStar}
+              {obj.ratingStar}
               <p className="text-sm leading-[100%]">
                 {obj.ratingText}
                 <span className="opacity-60">5</span>

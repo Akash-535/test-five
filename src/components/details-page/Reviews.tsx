@@ -69,7 +69,7 @@ const Reviews = () => {
           </div>
         ))}
       </div>
-      <button className="text-base satoshi-medium leading-[100%] py-[17px] px-11 mt-9 cursor-pointer border border-[#0000001A] rounded-full">
+      <button className="text-base satoshi-medium leading-[100%] py-[17px] px-11 mt-9 cursor-pointer border border-[#0000001A] rounded-full hover:bg-black hover:text-white duration-300 ease-linear">
         Load More Reviews
       </button>
     </div>

@@ -1,5 +1,9 @@
 "use client";
-import { NEW_ARRIVALS_LIST, TOP_SELLING_LIST } from "@/utils/helper";
+import {
+  ALSO_LIKE_LIST,
+  NEW_ARRIVALS_LIST,
+  TOP_SELLING_LIST,
+} from "@/utils/helper";
 import { useParams } from "next/navigation";
 import React from "react";
 import SignUp from "../common/SignUp";
@@ -8,7 +12,7 @@ import DetailsData from "./DetailsData";
 
 const Details = () => {
   const { slug } = useParams();
-  const arr = [...TOP_SELLING_LIST, ...NEW_ARRIVALS_LIST];
+  const arr = [...TOP_SELLING_LIST, ...NEW_ARRIVALS_LIST, ...ALSO_LIKE_LIST];
   const shopArray = arr.filter(
     (obj) =>
       obj &&

@@ -43,7 +43,9 @@ const UserTab = () => {
         <Reviews />
       ) : (
         <div className="mt-4">
-          <h2 className="text-lg text-center font-bold">Comming soon</h2>
+          <h2 className="text-lg text-center font-bold uppercase">
+            coming soon
+          </h2>
         </div>
       )}
     </>
