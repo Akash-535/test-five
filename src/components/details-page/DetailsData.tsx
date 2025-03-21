@@ -116,7 +116,7 @@ const DetailsData = () => {
             <Image
               width={444}
               height={530}
-              className="max-w-[444px] object-cover min-h-[530px] max-lg:max-w-[484px] max-h-[530px] rounded-[20px] max-md:min-h-[290px] max-md:max-w-none max-xl:w-full"
+              className="max-w-[444px] object-cover min-h-[530px] max-lg:max-w-[484px] max-h-[530px] rounded-[24px] max-md:min-h-[290px] max-md:max-w-none max-xl:w-full"
               src={selectImg ? selectImg : newShop.image}
               alt="image"
             />
