@@ -1,6 +1,6 @@
 "use client";
 import { HEADER_LIST } from "@/utils/helper";
-import { SearchIcon, ShopCartIcon } from "@/utils/icons";
+import { DownArrowIcon, SearchIcon, ShopCartIcon } from "@/utils/icons";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -67,9 +67,12 @@ const Header = () => {
               href={obj.link}
               key={i}
               onClick={() => setOpen(false)}
-              className="leading-[100%] max-lg:text-white max-lg:text-xl hover:opacity-60 duration-300 ease-linear"
+              className={`leading-[100%] max-lg:text-white max-lg:text-xl hover:opacity-60 duration-300 ease-linear ${
+                i === 0 && "flex gap-1 items-center"
+              }`}
             >
               {obj.title}
+              {i === 0 && <DownArrowIcon />}
             </Link>
           ))}
         </div>

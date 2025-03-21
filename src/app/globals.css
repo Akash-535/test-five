@@ -65,7 +65,7 @@ body {
 .group:hover .checkout-arrow svg path {
   fill: black;
 }
-/* 
+
 .happy-swiper .swiper-wrapper .swiper-slide {
   filter: blur(4px);
 }
@@ -74,7 +74,7 @@ body {
 .swiper-slide-next,
 .swiper-slide-prev {
   filter: blur(0px) !important;
-} */
+}
 
 @media (max-width: 767.98px) {
   .search-icon svg path {
