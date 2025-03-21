@@ -12,6 +12,7 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface SelectProduct {
   color: string | number | null;
@@ -39,13 +40,13 @@ const DetailsData = () => {
       title: newShop.title,
       price: newShop.price,
     };
-    const exists = cart.some(
+    const added = cart.some(
       (item: SelectProduct) =>
         item.color === selectedProduct.color &&
         item.size === selectedProduct.size &&
         item.title === selectedProduct.title
     );
-    if (!exists) {
+    if (!added) {
       const updatedCart = [...cart, selectedProduct];
       setCart(updatedCart);
       localStorage.setItem("cart", JSON.stringify(updatedCart));
