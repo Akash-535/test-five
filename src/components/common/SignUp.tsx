@@ -11,8 +11,8 @@ const SignUp = () => {
         show ? "hidden" : ""
       }`}
     >
-      <div className="flex w-full items-center justify-between max-w-[796px] ml-auto pr-24 2xl:mx-auto min-[1919px]:pr-0 max-lg:pr-0">
-        <div className="flex gap-1 justify-center items-center">
+      <div className="flex w-full items-center max-w-[1208px] justify-between mx-auto pr-8 max-lg:pr-0">
+        <div className="flex gap-1 justify-center items-center text-center w-full">
           <p className="text-white text-sm max-md:text-xs">
             Sign up and get 20% off to your first order.
           </p>
@@ -23,7 +23,10 @@ const SignUp = () => {
             Sign Up Now
           </Link>
         </div>
-        <button onClick={() => setShow(!show)} className="cursor-pointer">
+        <button
+          onClick={() => setShow(!show)}
+          className="cursor-pointer flex justify-end"
+        >
           <CrossIcon />
         </button>
       </div>

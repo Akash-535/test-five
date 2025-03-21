@@ -126,7 +126,7 @@ const DetailsData = () => {
           />
         </div>
         <div className="w-6/12 max-lg:w-8/12 max-md:w-full">
-          <h2 className="text-[40px] font_numeric leading-[100%] max-lg:text-3xl max-md:text-2xl">
+          <h2 className="text-[40px] font-numeric leading-[100%] max-lg:text-3xl max-md:text-2xl">
             {newShop.title}
           </h2>
           <div className="flex gap-3 py-3.5 items-center">

@@ -77,7 +77,7 @@ const Header = () => {
               <Link
                 onClick={() => setOpen(false)}
                 href="#"
-                className="flex gap-1 items-center transition-all duration-300 hover:scale-105 leading-[100%] whitespace-nowrap"
+                className="flex gap-1 items-center transition-all duration-300 leading-[100%] whitespace-nowrap link-text relative"
               >
                 {obj.title} {obj.submenu && <DownArrowIcon />}
               </Link>

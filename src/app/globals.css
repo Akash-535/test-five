@@ -35,7 +35,7 @@ body {
 .font-integral {
   font-family: "integral-cf", sans-serif;
 }
-.font_numeric {
+.font-numeric {
   font-variant-numeric: lining-nums proportional-nums;
 }
 .sign-up-link::after {
@@ -48,6 +48,20 @@ body {
   background-color: white;
 }
 
+.link-text::after {
+  position: absolute;
+  content: "";
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background: #000;
+  left: 0;
+  transition: width 300ms linear;
+}
+
+.link-text:hover::after {
+  width: 100%;
+}
 .swiper-wrapper {
   display: flex;
 }
