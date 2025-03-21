@@ -5,6 +5,7 @@ import Header from "../common/Header";
 import { DeleteIcon, MinusIcon, NextIcon, PlusIcon } from "@/utils/icons";
 import Image from "next/image";
 import OrderSummery from "./OrderSummery";
+import Link from "next/link";
 
 interface CartItem {
   title: string;
@@ -128,7 +129,15 @@ const Cart = () => {
             <OrderSummery />
           </div>
         ) : (
-          <p className="text-2xl satoshi-bold">No items in the cart.</p>
+          <div className="flex justify-center items-center gap-4 flex-col">
+            <p className="text-2xl satoshi-bold">No items in the cart.</p>
+            <Link
+              href="/"
+              className="cursor-pointer bg-black rounded-full py-3 px-[38.5px] text-base satoshi-medium text-white border border-transparent hover:bg-white hover:text-black hover:border-black duration-300 ease-linear max-md:py-3.5 max-md:px-[25px]"
+            >
+              Add Item
+            </Link>
+          </div>
         )}
       </div>
     </div>

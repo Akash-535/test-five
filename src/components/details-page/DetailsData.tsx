@@ -48,7 +48,7 @@ const DetailsData = () => {
       const updatedCart = [...cart, selectedProduct];
       setCart(updatedCart);
       localStorage.setItem("cart", JSON.stringify(updatedCart));
-      toast.success("Sucessfuly Added");
+      toast.success("successfully Added");
     } else {
       toast.error("Already Added");
     }
@@ -57,7 +57,6 @@ const DetailsData = () => {
     const cartData = localStorage.getItem("cart");
     if (cartData) {
       setCart(JSON.parse(cartData));
-      console.log("cart data");
     }
   }, []);
 
