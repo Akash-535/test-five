@@ -51,7 +51,6 @@ const DetailsData = () => {
       setCart(updatedCart);
       localStorage.setItem("cart", JSON.stringify(updatedCart));
 
-      // Dispatching custom event to update the cart length in other components
       window.dispatchEvent(
         new CustomEvent("cartUpdated", { detail: updatedCart.length })
       );

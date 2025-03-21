@@ -36,7 +36,7 @@ const CustomSwiper = ({ headingText, parentClass, list }: CommonData) => {
               spaceBetween: 20,
             },
           }}
-          className="!pt-14 mx-auto flex justify-between mySwiper max-w-[1240px] overflow-hidden max-lg:!pt-11 max-md:!pt-8"
+          className="!pt-14 mx-auto flex justify-between mySwiper max-w-[1240px] overflow-hidden max-lg:!pt-11 max-md:!pt-8 gap-8"
         >
           {list.map((obj: any, i: number) => (
             <SwiperSlide

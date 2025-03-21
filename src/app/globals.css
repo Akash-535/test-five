@@ -119,4 +119,8 @@ body {
     width: 134;
     height: 21px;
   }
+
+  .link-text svg path {
+    fill: white;
+  }
 }

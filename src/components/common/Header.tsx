@@ -19,6 +19,7 @@ const Header = () => {
   const router = useRouter();
 
   useEffect(() => {
+    document.body.style.overflow = open || value ? "hidden" : "auto";
     const storedCart = localStorage.getItem("cart");
     if (storedCart) {
       const cart = JSON.parse(storedCart);
@@ -34,7 +35,7 @@ const Header = () => {
     return () => {
       window.removeEventListener("cartUpdated", handleCartUpdated);
     };
-  }, []);
+  }, [open, value]);
 
   return (
     <div className="max-w-[1240px] mx-auto py-6 flex items-center px-4 max-md:py-5">
@@ -77,7 +78,7 @@ const Header = () => {
               <Link
                 onClick={() => setOpen(false)}
                 href="#"
-                className="flex gap-1 items-center transition-all duration-300 leading-[100%] whitespace-nowrap link-text relative"
+                className="flex gap-1 items-center transition-all duration-300 leading-[100%] whitespace-nowrap link-text relative max-lg:text-white"
               >
                 {obj.title} {obj.submenu && <DownArrowIcon />}
               </Link>
