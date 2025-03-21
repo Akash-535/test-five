@@ -3,11 +3,12 @@ import React from "react";
 import Reviews from "./Reviews";
 import Link from "next/link";
 import { USER_TAB_LIST } from "@/utils/helper";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const UserTab = () => {
   const searchParams = useSearchParams();
   const tab = searchParams.get("tab") || "rating-and-reviews";
+  const router = useRouter();
   return (
     <>
       <div className="flex mx-auto relative max-w-[1240px]">
@@ -28,6 +29,10 @@ const UserTab = () => {
             >
               <Link
                 href={`?tab=${itemSlug}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  router.push(`?tab=${itemSlug}`, { scroll: false });
+                }}
                 className={`text-center text-xl max-sm:text-base max-md:text-lg whitespace-nowrap leading-[100%] ${
                   isActive && "font-medium"
                 }`}

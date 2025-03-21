@@ -40,7 +40,7 @@ const DetailsData = () => {
       price: newShop.price,
     };
     const exists = cart.some(
-      (item: any) =>
+      (item: SelectProduct) =>
         item.color === selectedProduct.color &&
         item.size === selectedProduct.size
     );
@@ -101,7 +101,7 @@ const DetailsData = () => {
               {DETAILS_SIDE_IMG.map((obj, i) => (
                 <div
                   key={i}
-                  className="w-[152px] h-[167px] max-lg:w-full max-sm:max-w-[111px] max-sm:h-[106px] max-w-[152px] cursor-pointer overflow-hidden border border-transparent hover:border-black duration-300 ease-linear rounded-[20px]"
+                  className={`w-[152px] h-[167px] max-lg:w-full max-sm:max-w-[111px] max-sm:h-[106px] max-w-[152px] cursor-pointer overflow-hidden border border-transparent hover:border-black duration-300 ease-linear rounded-[20px] `}
                 >
                   <Image
                     onClick={() => setSelectImg(i === 0 ? newShop.image : obj)}

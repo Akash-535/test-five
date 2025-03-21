@@ -38,7 +38,7 @@ const EmailForm = ({ myClass }: ClassCustom) => {
   };
   return (
     <>
-      <ToastContainer position="top-right" />
+      <ToastContainer position="top-center" />
       <div className={`px-4 w-full ${myClass}`}>
         <div className="max-w-[1240px] bg-black mx-auto flex justify-between items-center w-full py-9 rounded-[20px] px-16 max-lg:px-10 max-md:px-5 max-md:pt-8 max-md:pb-7">
           <div className="max-w-[1112px] mx-auto flex justify-between w-full items-center gap-10 max-lg:flex-wrap max-lg:justify-center max-md:gap-8">
