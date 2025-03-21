@@ -62,19 +62,17 @@ const DetailsData = () => {
     }
   }, []);
 
-  const shopArray = arr.filter(
-    (obj) =>
-      obj &&
-      obj.title &&
-      obj.title.toLowerCase().replace(/\s+/g, "-").replace("&", "%26") === slug
-  );
-
   const checkHandler = (index: number) => {
     setClicked(clicked === index ? null : index);
   };
   const sizeHandler = (index: number) => {
     setSize(size === index ? null : index);
   };
+
+  const shopArray = arr.filter(
+    (obj) =>
+      obj && obj.title && obj.title.toLowerCase().replace(/\s+/g, "-") === slug
+  );
 
   const newShop: any = shopArray.length ? shopArray[0] : null;
   return (
