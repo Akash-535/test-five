@@ -42,7 +42,8 @@ const DetailsData = () => {
     const exists = cart.some(
       (item: SelectProduct) =>
         item.color === selectedProduct.color &&
-        item.size === selectedProduct.size
+        item.size === selectedProduct.size &&
+        item.title === selectedProduct.title
     );
     if (!exists) {
       const updatedCart = [...cart, selectedProduct];
