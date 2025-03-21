@@ -17,14 +17,24 @@ const Header = () => {
   const [value, setValue] = useState(false);
   const [cartLength, setCartLength] = useState<CartItem[] | any>(0);
   const router = useRouter();
+
   useEffect(() => {
     const storedCart = localStorage.getItem("cart");
     if (storedCart) {
       const cart = JSON.parse(storedCart);
       setCartLength(cart.length);
     }
-    document.body.style.overflow = open || value ? "hidden" : "auto";
-  }, [open, value]);
+
+    const handleCartUpdated = (event: Event) => {
+      const customEvent = event as CustomEvent<number>;
+      setCartLength(customEvent.detail);
+    };
+
+    window.addEventListener("cartUpdated", handleCartUpdated);
+    return () => {
+      window.removeEventListener("cartUpdated", handleCartUpdated);
+    };
+  }, []);
 
   return (
     <div className="max-w-[1240px] mx-auto py-6 flex items-center px-4 max-md:py-5">
@@ -63,17 +73,35 @@ const Header = () => {
           }`}
         >
           {HEADER_LIST.map((obj, i) => (
-            <Link
-              href={obj.link}
-              key={i}
-              onClick={() => setOpen(false)}
-              className={`leading-[100%] max-lg:text-white max-lg:text-xl hover:opacity-60 duration-300 ease-linear ${
-                i === 0 && "flex gap-1 items-center"
-              }`}
-            >
-              {obj.title}
-              {i === 0 && <DownArrowIcon />}
-            </Link>
+            <div key={i} className="group relative">
+              <Link
+                onClick={() => setOpen(false)}
+                href="#"
+                className="flex gap-1 items-center transition-all duration-300 hover:scale-105 leading-[100%] whitespace-nowrap"
+              >
+                {obj.title} {obj.submenu && <DownArrowIcon />}
+              </Link>
+              {obj.submenu && (
+                <div className="bg-white shadow-md absolute group-hover:block hidden z-10">
+                  <ul className="p-2">
+                    {obj.submenu.map((subObj, subIndex) => (
+                      <li
+                        key={subIndex}
+                        className="hover:bg-gray-100 px-4 py-1"
+                      >
+                        <Link
+                          onClick={() => setOpen(false)}
+                          className="whitespace-nowrap"
+                          href="#"
+                        >
+                          {subObj.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           ))}
         </div>
         <div className="flex gap-10 items-center max-lg:gap-6 max-md:gap-3">
@@ -108,7 +136,7 @@ const Header = () => {
           >
             <ShopCartIcon />
             {cartLength > 0 && (
-              <span className=" absolute top-[-15px] right-[-5px]">
+              <span className="absolute top-[-15px] right-[-9px] bg-red-400 text-sm text-white size-5 flex justify-center items-center rounded-full">
                 {cartLength}
               </span>
             )}

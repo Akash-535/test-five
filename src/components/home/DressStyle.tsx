@@ -12,14 +12,14 @@ const DressStyle = () => {
             <Image
               width={407}
               height={289}
-              className="max-w-[407px] max-h-[289px] max-md:max-w-[310px] max-md:max-h-[190px] rounded-[20px] max-lg:max-h-[244px] lg:object-top object-cover max-xl:max-w-[350px] max-xl:w-full max-lg:max-w-[580px]"
+              className="max-w-[407px] max-h-[289px] max-md:max-w-[310px] max-md:max-h-[190px] rounded-[20px] max-lg:max-h-[244px] lg:object-top object-cover max-xl:max-w-[350px] max-xl:w-full max-lg:max-w-[580px] hover:shadow-lg duration-300 ease-linear"
               src="/assets/images/causual-dress-img.webp"
               alt="casual dress"
             />
             <Image
               width={684}
               height={289}
-              className="max-w-[684px] max-md:max-w-[310px] max-md:min-h-[190px] object-cover object-left rounded-[20px] max-xl:max-w-[580px] max-xl:w-full"
+              className="max-w-[684px] max-md:max-w-[310px] max-md:min-h-[190px] object-cover object-left rounded-[20px] max-xl:max-w-[580px] max-xl:w-full hover:shadow-lg duration-300 ease-linear"
               src="/assets/images/formal-dress-img.webp"
               alt="formal dress"
             />
@@ -28,14 +28,14 @@ const DressStyle = () => {
             <Image
               width={684}
               height={289}
-              className="max-w-[684px] max-md:max-w-[310px] max-md:min-h-[190px] object-cover object-left rounded-[20px] max-xl:max-w-[580px] max-xl:w-full"
+              className="max-w-[684px] max-md:max-w-[310px] max-md:min-h-[190px] object-cover object-left rounded-[20px] max-xl:max-w-[580px] max-xl:w-full hover:shadow-lg duration-300 ease-linear"
               src="/assets/images/party-dress-img.webp"
               alt="party dress"
             />
             <Image
               width={407}
               height={289}
-              className="max-w-[407px] max-h-[289px] max-md:max-w-[310px] max-md:max-h-[190px] rounded-[20px] max-lg:max-h-[244px] object-top object-cover max-xl:max-w-[350px] max-xl:w-full max-lg:max-w-[580px]"
+              className="max-w-[407px] max-h-[289px] max-md:max-w-[310px] max-md:max-h-[190px] rounded-[20px] max-lg:max-h-[244px] object-top object-cover max-xl:max-w-[350px] max-xl:w-full max-lg:max-w-[580px] hover:shadow-lg duration-300 ease-linear"
               src="/assets/images/gym-dress-img.webp"
               alt="gym dress"
             />

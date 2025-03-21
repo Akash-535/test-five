@@ -3,7 +3,15 @@ import { PromoCodeIcon, SwiperArrowIcon } from "@/utils/icons";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-const OrderSummery = () => {
+const OrderSummery = ({
+  discount,
+  subtotal,
+  total,
+}: {
+  discount: number;
+  subtotal: number;
+  total: number;
+}) => {
   const router = useRouter();
 
   const handleCheckout = () => {
@@ -16,11 +24,11 @@ const OrderSummery = () => {
       <div className="pt-6 flex flex-col gap-5 max-md:pt-4">
         <div className="flex items-center justify-between">
           <p className="opacity-60 text-xl">Subtotal</p>
-          <p className="satoshi-bold text-xl">$565</p>
+          <p className="satoshi-bold text-xl">${subtotal}</p>
         </div>
         <div className="flex items-center justify-between">
           <p className="opacity-60 text-xl">Discount (-20%)</p>
-          <p className="satoshi-bold text-[#FF3333] text-xl">-$113</p>
+          <p className="satoshi-bold text-[#FF3333] text-xl">-${discount}</p>
         </div>
         <div className="flex items-center justify-between">
           <p className="opacity-60 text-xl">Delivery Fee</p>
@@ -29,7 +37,7 @@ const OrderSummery = () => {
         <div className="w-full h-[1px] bg-[#0000001A]"></div>
         <div className="flex items-center justify-between">
           <p className="text-xl">Total</p>
-          <p className="satoshi-bold text-xl">$467</p>
+          <p className="satoshi-bold text-xl">${total}</p>
         </div>
       </div>
       <div className="pt-6 flex justify-between items-center max-md:gap-3 max-md:pt-4">

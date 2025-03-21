@@ -27,7 +27,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>{children}</body>
+      <body
+        className={`antialiased`}
+        data-new-gr-c-s-check-loaded="14.1226.0"
+        data-gr-ext-installed=""
+      >
+        {children}
+      </body>
     </html>
   );
 }

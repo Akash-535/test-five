@@ -59,10 +59,10 @@ const AlsoLike = () => {
               </div>
               <div className="flex gap-2.5 items-center">
                 <p className="satoshi-bold leading-[100%] text-2xl">
-                  {obj.price}
+                  ${obj.price}
                 </p>
                 <p className="line-through opacity-40 leading-[100%] text-2xl">
-                  {obj.prevPrice}
+                  ${obj.prevPrice}
                 </p>
                 <p
                   className={`${

@@ -31,6 +31,9 @@ const Cart = () => {
     const updatedCart = cartItems.filter((_, i) => i !== index);
     setCartItems(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+    window.dispatchEvent(
+      new CustomEvent("cartUpdated", { detail: updatedCart.length })
+    );
   };
 
   const handleQuantityChange = (index: number, change: number) => {
@@ -44,6 +47,16 @@ const Cart = () => {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
+  const calculateSubtotal = () => {
+    return cartItems.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+  };
+
+  const subtotal = calculateSubtotal();
+  const discount = (subtotal * 20) / 100;
+  const total = subtotal - discount + 15;
   return (
     <div>
       <SignUp />
@@ -100,7 +113,7 @@ const Cart = () => {
                         </p>
                         <div className="pt-4 flex justify-between w-full items-center">
                           <p className="text-2xl satoshi-bold max-md:text-xl">
-                            {item.price}
+                            ${item.price * item.quantity}
                           </p>
                           <div className="flex max-w-[126px] max-md:max-w-[105px] rounded-full w-full items-center justify-between bg-[#F0F0F0] py-3 px-5 max-md:py-[7.5px] max-md:px-[13.5px]">
                             <button
@@ -126,7 +139,11 @@ const Cart = () => {
                 ))}
               </div>
             </div>
-            <OrderSummery />
+            <OrderSummery
+              total={total}
+              subtotal={subtotal}
+              discount={discount}
+            />
           </div>
         ) : (
           <div className="flex justify-center items-center gap-4 flex-col">

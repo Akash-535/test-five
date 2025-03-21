@@ -3,6 +3,7 @@ import { MailIcon } from "@/utils/icons";
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 interface ClassCustom {
   myClass?: string;
 }
@@ -19,7 +20,7 @@ const EmailForm = ({ myClass }: ClassCustom) => {
     if (email && emailRegex.test(email)) {
       setEmail("");
       setError(false);
-      toast.success("Successfully sent!");
+      toast.success("Successfully toasted!");
       if (form.current) {
         emailjs
           .sendForm("service_ll432uj", "template_61ujxkd", form.current, {
@@ -60,6 +61,7 @@ const EmailForm = ({ myClass }: ClassCustom) => {
                     id="form-mail"
                     name="email"
                     type="email"
+                    autoComplete="off"
                     placeholder="Enter your email address"
                     className="w-full placeholder:text-[#00000066] text-[#00000066] outline-none bg-transparent"
                   />

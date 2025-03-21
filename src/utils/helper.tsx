@@ -23,6 +23,7 @@ import {
 interface HeaderList {
   title: string;
   link: string;
+  submenu?: { title: string; link: string }[];
 }
 
 interface ArrivalsList {
@@ -30,27 +31,32 @@ interface ArrivalsList {
   title?: string;
   ratingStar?: any;
   ratingText?: string;
-  price?: string;
-  prevPrice?: string;
+  price?: number;
+  prevPrice?: number;
   discount?: string;
 }
 
 export const HEADER_LIST: HeaderList[] = [
   {
     title: "Shop",
-    link: "#",
+    link: "#shop",
+    submenu: [
+      { title: "item 1", link: "#item 1" },
+      { title: "item 2", link: "#item 2" },
+      { title: "item 3", link: "#item 3" },
+    ],
   },
   {
     title: "On Sale",
-    link: "#",
+    link: "#on-sale",
   },
   {
     title: "New Arrivals",
-    link: "#",
+    link: "#new-arrival",
   },
   {
     title: "Brands",
-    link: "#",
+    link: "#brands",
   },
 ];
 
@@ -89,15 +95,15 @@ export const NEW_ARRIVALS_LIST: ArrivalsList[] = [
     title: "T-SHIRT WITH TAPE DETAILS",
     ratingStar: <FourHalfStarIcon />,
     ratingText: "4.5/",
-    price: "$120",
+    price: 120,
   },
   {
     image: "/assets/images/arrivals-img-two.webp",
     title: "SKINNY FIT JEANS",
     ratingStar: <ThreeHalfStarIcon />,
     ratingText: "3.5/",
-    price: "$240",
-    prevPrice: "$260",
+    price: 240,
+    prevPrice: 260,
     discount: "-20%",
   },
   {
@@ -105,15 +111,15 @@ export const NEW_ARRIVALS_LIST: ArrivalsList[] = [
     title: "CHECKERED SHIRT",
     ratingStar: <FourHalfStarIcon />,
     ratingText: "4.5/",
-    price: "$180",
+    price: 180,
   },
   {
     image: "/assets/images/arrivals-img-four.webp",
     title: "SLEEVE STRIPED T-SHIRT",
     ratingStar: <FourHalfStarIcon />,
     ratingText: "4.5/",
-    price: "$130",
-    prevPrice: "$160",
+    price: 130,
+    prevPrice: 160,
     discount: "-30%",
   },
   {
@@ -121,8 +127,8 @@ export const NEW_ARRIVALS_LIST: ArrivalsList[] = [
     title: "SKINNY FIT JEANS",
     ratingStar: <ThreeHalfStarIcon />,
     ratingText: "3.5/",
-    price: "$240",
-    prevPrice: "$260",
+    price: 240,
+    prevPrice: 260,
     discount: "-20%",
   },
   {
@@ -130,7 +136,7 @@ export const NEW_ARRIVALS_LIST: ArrivalsList[] = [
     title: "CHECKERED SHIRT",
     ratingStar: <FourHalfStarIcon />,
     ratingText: "4.5/",
-    price: "$180",
+    price: 180,
   },
 ];
 
@@ -140,8 +146,8 @@ export const TOP_SELLING_LIST: ArrivalsList[] = [
     title: "VERTICAL STRIPED SHIRT",
     ratingStar: <FiveStarIcon />,
     ratingText: "5/",
-    price: "$212",
-    prevPrice: "$232",
+    price: 212,
+    prevPrice: 232,
     discount: "-20%",
   },
   {
@@ -149,35 +155,35 @@ export const TOP_SELLING_LIST: ArrivalsList[] = [
     title: "COURAGE GRAPHIC T-SHIRT",
     ratingStar: <FourStarIcon />,
     ratingText: "4/",
-    price: "$145",
+    price: 145,
   },
   {
     image: "/assets/images/selling-img-three.webp",
     title: "LOOSE FIT BERMUDA SHORTS",
     ratingStar: <ThreeStarIocn />,
     ratingText: "3/",
-    price: "$80",
+    price: 80,
   },
   {
     image: "/assets/images/selling-img-four.webp",
     title: "FADED SKINNY JEANS",
     ratingStar: <FourHalfStarIcon />,
     ratingText: "4.5/",
-    price: "$210",
+    price: 210,
   },
   {
     image: "/assets/images/selling-img-two.webp",
     title: "COURAGE GRAPHIC T-SHIRT",
     ratingStar: <FourStarIcon />,
     ratingText: "4/",
-    price: "$145",
+    price: 145,
   },
   {
     image: "/assets/images/selling-img-three.webp",
     title: "LOOSE FIT BERMUDA SHORTS",
     ratingStar: <ThreeStarIocn />,
     ratingText: "3/",
-    price: "$80",
+    price: 80,
   },
 ];
 
@@ -301,8 +307,8 @@ export const ALSO_LIKE_LIST = [
     title: "Polo with Contrast Trims",
     ratingStar: <FourStarIcon />,
     ratingText: "4.0/",
-    price: "$212",
-    prevPrice: "$242",
+    price: 212,
+    prevPrice: 242,
     discount: "-20%",
   },
   {
@@ -310,22 +316,22 @@ export const ALSO_LIKE_LIST = [
     title: "Gradient Graphic T-shirt",
     ratingStar: <ThreeHalfStarIcon />,
     ratingText: "3.5/",
-    price: "$145",
+    price: 145,
   },
   {
     image: "/assets/images/also-img-three.webp",
     title: "Polo with Tipping Details",
     ratingStar: <FourHalfStarIcon />,
     ratingText: "4.5/",
-    price: "$180",
+    price: 180,
   },
   {
     image: "/assets/images/also-img-four.webp",
     title: "Black Striped T-shirt",
     ratingStar: <FiveStarIcon />,
     ratingText: "5.0/",
-    price: "$120",
-    prevPrice: "$150",
+    price: 120,
+    prevPrice: 150,
     discount: "-30%",
   },
   {
@@ -333,15 +339,15 @@ export const ALSO_LIKE_LIST = [
     title: "Polo with Tipping Details",
     ratingStar: <FourHalfStarIcon />,
     ratingText: "4.5/",
-    price: "$180",
+    price: 180,
   },
   {
     image: "/assets/images/also-img-four.webp",
     title: "Black Striped T-shirt",
     ratingStar: <FiveStarIcon />,
     ratingText: "5.0/",
-    price: "$120",
-    prevPrice: "$150",
+    price: 120,
+    prevPrice: 150,
     discount: "-30%",
   },
 ];
@@ -410,4 +416,4 @@ interface SelectProduct {
   title: string;
   price: string;
 }
-export const CART_ARRAY :SelectProduct[]= [];
+export const CART_ARRAY: SelectProduct[] = [];
