@@ -30,7 +30,7 @@ const Hero = () => {
               designed to bring out your individuality and cater to your sense
               of style.
             </p>
-            <button className="py-[17px] px-[67px] max-w-[210px] bg-black rounded-full leading-[100%] text-white cursor-pointer border border-transparent hover:bg-[#F2F0F1] hover:text-black hover:border-black duration-300 ease-linear">
+            <button className="py-[17px] px-[67px] max-w-[210px] max-md:max-w-none bg-black rounded-full leading-[100%] text-white cursor-pointer border border-transparent hover:bg-[#F2F0F1] hover:text-black hover:border-black duration-300 ease-linear">
               Shop Now
             </button>
             <div
